@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id" class="overflow-x-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nama Dinamis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <script src="./js/tailwind.conf.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+body, section {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  border: none;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+img {
+  max-width: 100%;
+}
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+      
+      .animate-fadeOut {
+        animation: fadeOut 0.5s forwards;
+      }
+    </style>
+  </head>
+  <body class="snap-y snap-mandatory overflow-y-scroll overflow-x-hidden relative h-screen m-0 p-0">
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-80">
+    <div class="bg-[#a7d1ad] p-8 md:p-12 rounded-lg shadow-xl max-w-lg w-full mx-4 relative overflow-hidden">
+      <div class="absolute -top-10 -left-10">
+        <img src="./assets/3.png" alt="Decorative Icon" class="w-[100px] h-[100px] opacity-30" />
+      </div>
+      <div class="absolute -bottom-10 -right-10">
+        <img src="./assets/7.png" alt="Decorative Icon" class="w-[100px] h-[100px] opacity-30" />
+      </div> 
+      <div class="text-center relative z-10">
+        <h2 class="font-playfair text-3xl md:text-4xl mb-3 text-[#4a5f4e]">Undangan Pernikahan</h2>
+        <h1 class="font-playfair text-4xl md:text-5xl mb-6 text-black">Alex & Alisha</h1>
+        <p class="text-xl md:text-2xl mb-4 font-medium">Kepada Yth:</p>
+        <p id="welcomeName" class="text-2xl md:text-3xl mb-8 font-luxurious text-[#4a5f4e]">Nama Tamu</p>     
+        <p class="mb-8 text-sm md:text-base">Kami mengundang Anda untuk hadir dan berbagi kebahagiaan di hari pernikahan kami pada tanggal 10 Oktober 2030.</p>
+        <button id="openInvitation" class="bg-[#4a5f4e] text-white py-3 px-8 rounded-full hover:bg-[#3a4f3e] transition-colors duration-300 font-medium">
+          Buka Undangan
+        </button>
+      </div>
+    </div>
+    </div>
+
+    <div class="fixed bottom-5 bg-[#a7d1ad] left-5 bg-opacity-70 p-0 rounded-xl flex items-center space-x-3">
+      <button onclick="toggleMusic()" class="text-white p-2 rounded-lg">
+          <img id="musicIcon" src="./assets/sound.png" alt="Music Icon" class="w-6 h-6">
+      </button>
+    </div>
+  
+    <audio id="bgMusic" loop autoplay>
+      <source src="./assets/Reality Club - 2112.mp3" type="audio/mpeg">
+      Browser tidak mendukung audio.
+    </audio>
+
+    <section id="home" class="snap-start h-screen flex flex-col justify-center items-center">
+      <div class="absolute inset-0 bg-undangan-home bg-cover bg-center bg-no-repeat z-0"></div>
+      <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+      <div class="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+        <img src="./assets/LOGO.png" alt="Logo" class="w-[150px] sm:w-[200px]" />
+      </div>
+      <div class="relative z-20 flex items-center justify-center h-full">
+        <h1 class="mt-[15rem] text-[40px] sm:text-[50px] md:text-[100px] xl:text[128px] xl:text[160px] text-[#fbeb78] font-playfair text-center leading-none">ALEX
+          <span class="text-white transform translate-y-[40px] inline-block">&</span>
+          <span class="transform translate-y-[70px] inline-block">ALISHA</span>
+        </h1>
+      </div>
+    </section>
+
+    <section class="snap-start flex items-center justify-center min-h-screen bg-[#4a5f4e] px-4 md:px-10 py-16">
+      <div class="flex flex-col md:flex-row w-full max-w-5xl gap-1 sm:gap-6">
+        <div class="flex flex-col space-y-4 w-full md:w-1/2 relative">
+          <img src="./assets/Hans-1.jpg" alt="Groom Image 1" class="shadow-lg w-full object-cover h-50"/>
+          <div class="align-item-end hidden sm:block">
+            <img src="./assets/Hans-2.jpg" alt="Groom Image 2" class="shadow-lg w-full object-cover h-64 w-max-[400px]"/>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 bg-[#a7d1ad] p-6 transform translate-y-8 shadow-lg relative">
+          <div class="absolute top-[-70px] left-[-65px]">
+            <img src="./assets/3.png" alt="Decorative Icon" class="w-[155px] h-[155px] scale-x-[-1]"/>
+          </div>
+          <div class="absolute bottom-[240px] right-[-80px]">
+            <img src="./assets/7.png" alt="Decorative Icon" class="w-[155px] h-[155px]"/>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-semibold text-black mb-2 sm:mb-4 p-0 sm:p-2 font-playfair text-center w-max-[600px] mr-[10px]">
+            The Groom – Alex
+          </h2>
+          <ul class="list-disc list-inside text-black text-sm sm:text-2xl md:text-2xl xl:text-3xl space-y-2">
+            <li><strong>Age:</strong> 27 years old</li>
+            <li><strong>Profession:</strong> CEO</li>
+            <li><strong>Traits:</strong> Determined, charismatic, loving</li>
+            <li>
+              <strong>Journey:</strong> A driven leader who has achieved great success, now ready to embark on his most meaningful journey—marriage with his soulmate.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="snap-start flex items-center justify-center min-h-screen bg-[#4a5f4e] px-4 md:px-10 py-16">
+      <div class="flex flex-col md:flex-row w-full max-w-5xl gap-1 sm:gap-6">
+        <div class="flex flex-col space-y-4 w-full md:w-1/2 relative">
+          <img src="./assets/Naura-2.jpg" alt="Groom Image 1" class="shadow-lg w-full object-cover h-40"/>
+          <div class="align-item-end hidden sm:block">
+            <img src="./assets/Naura-1.jpg" alt="Groom Image 2"class="shadow-lg w-full object-cover h-64 w-max-[400px]"/>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 bg-[#a7d1ad] p-6 transform translate-y-8 shadow-lg relative">
+          <div class="absolute top-[-70px] left-[-65px]">
+            <img src="./assets/3.png" alt="Decorative Icon" class="w-[155px] h-[155px] scale-x-[-1]"/>
+          </div>
+          <div class="absolute bottom-[240px] right-[-80px]">
+            <img src="./assets/7.png" alt="Decorative Icon" class="w-[155px] h-[155px]"/>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-semibold text-black mb-4 font-playfair text-center w-max-[600px] mr-[10px]">
+            The Bride – Alisha
+          </h2>
+          <ul class="list-disc list-inside text-black text-sm sm:text-2xl md:text-2xl xl:text-3xl space-y-2">
+            <li><strong>Age:</strong> 25 years old</li>
+            <li><strong>Profession:</strong> Architect</li>
+            <li>
+              <strong>Traits:</strong> Creative, compassionate, strong-willed
+            </li>
+            <li>
+              <strong>Journey:</strong> A driven leader who was achived great success, now ready to embark on her most meaningful journey—marriage with her soulmate.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="snap-start min-h-screen bg-[#a7d1ad] px-4 md:px-10 py-16">
+      <h1 class="text-center font-bold text-2xl sm:text-6xl text-black font-playfair font-light mb-10">A CHANCE ENCOUNTER</h1>
+      <div class="items-center">
+        <div class="flex">
+          <p class="text-black text-sm sm:text-lg w-4/8">
+            Alex and Alisha's story began in the most unexpected way at a café
+            where Alex was reviewing a business proposal and Alisha was
+            sketching a new building design. A simple mix-up with their coffee
+            orders sparked a conversation that neither of them wanted to end.
+            Their shared love for creativity, ambition, and long walks through
+            the city quickly brought them closer. Before they knew it, casual
+            coffee chats turned into deep conversations about life, dreams, and
+            the future.
+          </p>
+          <div class="md:w-1/2 hidden sm:block">
+            <img src="./assets/1.png" class="w-[500px] h-auto transfom -translate-y-10 rotate-[9deg]" alt="A Chance Encounter"/>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="w-1/2 md:w-1/2 hidden sm:block">
+            <img src="./assets/4.png" class="w-[350px] h-auto transfrom -translate-y-8 -translate-x-[10px]" alt="A Chance Encounter"/>
+          </div>
+          <p class="text-black text-sm sm:text-lg w-4/8">
+            Through the years, their journey has been filled with laughter,
+            challenges, and unwavering support for each other's ambitions. As a
+            CEO, Alex admired Alisha's ability to turn ideas into breathtaking
+            structures, while Alisha's found inspiration in Alex's vision and
+            determination. They navigated long work hours, late-night
+            brainstorming sessions, and the occasional debate over whose career
+            was more stressful. But through it all, their love remained the
+            foundation that kept them strong.
+          </p>
+        </div>
+        <div class="flex">
+          <p class="text-black text-sm sm:text-lg w-4/8">
+            Now, as the stand on the brink of forever, this special day is
+            celebration of their love, resilience, align-item-end the life the
+            are building together. Their story is not just about romance but
+            about partnership, growth, and a shared dream of a future filled
+            with adventure.
+          </p>
+          <div class="w-1/2 md:w-1/2 hidden sm:block">
+            <img src="./assets/5.png" class="w-[250px] h-[250px] tranform -translate-y-20 translate-x-8 -rotate-[10deg]" alt="A Chance Encounter"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="snap-start flex flex-col sm:flex-row h-screen bg-[#b8d2ad]">
+      <div class="w-full sm:w-1/2 h-1/2 mb-3 sm:mb-0 sm:h-full">
+        <img src="./assets/A promise for life.jpg" class="w-full h-full object-cover"/>
+      </div>
+      <div class="w-full sm:w-1/2 flex flex-col justify-center px-5 sm:px-14">
+        <h1 class="text-xl sm:text-6xl font-bold  font-playfair text-black mt-5 sm:mt-0 mb-5 sm:mb-10">A PROMISE <br class="hidden sm:block"/>
+          FOR LIFE
+        </h1>
+        <p class="text-black leading-relaxed text-sm sm:text-lg mt-5 sm:mt-[150px]">
+          As we begin this new chapter together, we hope for a life filled with
+          love, laughter, and endless adventures. May our journey be one of
+          growth, understanding, and unwavering support for each other. We look
+          forward to building a home where dreams thrive, challenges are faced
+          hand in hand, and every moment is cherished. Here’s to a lifetime of
+          happiness and togetherness!
+        </p>
+      </div>
+    </section>
+
+    <section class="snap-start flex flex-col md:flex-row h-screen bg-[#9db18c] overflow-hidden">
+      <div class="flex flex-col ml-4 sm:ml-10 mt-10 font-playfair font-light">
+        <h6 class="text-5xl sm:text-7xl text-black">THE DAY'S <br />EVENTS</h6>
+        <p class="mt-4 text-2xl sm:text-3xl">Oktober 10, 2030</p>
+        <div class="mt-14 space-y-5">
+          <hr class="w-[330px] sm:w-[800px] h-px bg-black border-0" />
+          <div class="flex justify-between w-[330px] sm:w-[800px] font-medium text-sm sm:text-xl">
+            <p>3:00 PM</p>
+            <span>VOWS AND I DO'S</span>
+          </div>
+          <hr class="w-[330px] sm:w-[800px] h-px bg-black border-0" />
+          <div class="flex justify-between w-[330px] sm:w-[800px] font-medium text-sm sm:text-xl">
+            <p>4:00 PM</p>
+            <span>COCKTAIL HOUR</span>
+          </div>
+          <hr class="w-[330px] sm:w-[800px] h-px bg-black border-0" />
+          <div class="flex justify-between w-[330px] sm:w-[800px] font-medium text-sm sm:text-xl">
+            <p>5:00 PM</p>
+            <span>DINNER AND DANCING</span>
+          </div>
+          <hr class="w-[330px] sm:w-[800px] h-px bg-black border-0" />
+          <div class="flex justify-between w-[330px] sm:w-[800px] font-medium text-sm sm:text-xl">
+            <p>8:00 PM</p>
+            <span>THE SEND-OFF</span>
+          </div>
+          <hr class="w-[330px] sm:w-[800px] h-px bg-black border-0" />
+        </div>
+      </div>
+      <div class="hidden md:flex md:flex-col ml-32">
+        <img src="./assets/6.png" class="w-[350px] h-[350px] transform -translate-x-16 -translate-y-5 rotate-[-9deg]" alt="Wedding Photo 1"/>
+        <img src="./assets/2.png" class="w-[350px] h-[350px] transform -translate-x-12 -translate-y-40 rotate-[17deg]" alt="Wedding Photo 2"/>
+        <img src="./assets/4.png" class="w-[280px] h-[280px] transform -translate-x-16 -translate-y-80 rotate-[17deg]" alt="Wedding Photo 3"/>
+      </div>
+      <div class="flex md:hidden justify-center gap-2 mt-6 px-4 pb-6">
+        <img src="./assets/6.png" class="w-[110px] h-[110px] object-cover rounded-lg rotate-[-5deg]" alt="Wedding Photo 1"/>
+        <img src="./assets/2.png" class="w-[110px] h-[110px] object-cover rounded-lg rotate-[5deg]" alt="Wedding Photo 2"/>
+        <img src="./assets/4.png" class="w-[110px] h-[110px] object-cover rounded-lg rotate-[-5deg]" alt="Wedding Photo 3"/>
+      </div>
+    </section>
+
+    <section class="snap-start h-screen bg-[#b8d2ad] flex">
+      <div class="text-center font-light w-full mt-10">
+        <h1 class="text-3xl sm:text-5xl font-playfair ">WE CAN'T WAIT</h1>
+        <h1 class="text-3xl sm:text-5xl mt-3 font-luxurious">to hear from you!</h1>
+        <div class="flex flex-col items-center justify-center mt-3">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.663572737762!2d101.452919!3d0.5046316000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5aebce81ef37f%3A0x9b837fcba8f106e9!2sHotel%20Pangeran%20Pekanbaru!5e0!3m2!1sid!2sid!4v1743914255822!5m2!1sid!2sid"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            class="w-[300px] sm:w-[350px] h-[150px] sm:h-[200px]"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <a href="https://maps.app.goo.gl/gLByii9vAEyKZTYWA" class="underline mt-3 hover:text-gray-500  text-sm sm:text-2sm font-poppins">HOTEL PANGERAN PEKANBARU</a>
+        </div>
+        <hr class="h-px bg-black border-0 w-[90%] max-w-[600px] mx-auto mt-3" />
+        <h1 class="text-5xl mt-6 font-luxurious">Li Mei</h1>
+        <p class="mt-2 text-sm font-poppins">WEDDING ORGANIZER</p>
+        <div class="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-8 sm:gap-0 mt-10 mb-10 px-5 font-poppins text-center sm:text-left">
+          <div>
+            <p class="font-semibold">Phone</p>
+            <p>(123)456-789</p>
+          </div>
+          <div>
+            <p class="font-semibold">Email</p>
+            <p>hello@reallygreatsite.com</p>
+          </div>
+          <div>
+            <p class="font-semibold">Social</p>
+            <div class="flex flex-row justify-center sm:justify-start gap-3 mt-1">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </div>
+          </div>
+        </div>        
+        </div>
+      </div>
+    </section>
+
+    <section class="snap-start flex items-center justify-center min-h-screen bg-[#4a5f4e] px-4 md:px-10 py-16">
+      <div class="flex flex-col md:flex-row w-full max-w-5xl gap-6">
+        <div class="w-full md:w-1/2 relative">
+          <div class="grid grid-cols-2 gap-4 md:hidden">
+            <img src="./assets/Hans&Naura.jpg" class="w-full h-44 object-cover rounded-lg shadow-lg col-span-2" alt="Naura 2">
+            <img src="./assets/Naura-2.jpg" class="w-full h-40 object-cover rounded-lg shadow-lg" alt="Naura 1">
+            <img src="./assets/Hans-1.jpg" class="w-full h-40 object-cover rounded-lg shadow-lg" alt="Hans & Naura">
+          </div>
+          <div class="hidden md:flex flex-col space-y-4">
+            <img src="./assets/Hans-1.jpg" alt="Naura 2" class="w-full object-cover h-56 rounded-lg shadow-lg"/>
+            <img src="./assets/Naura-1.jpg" alt="Naura 1" class="w-full object-cover h-72 rounded-lg shadow-lg"/>
+          </div>
+        </div>
+        <div class="hidden md:block w-full md:w-1/2 bg-[url('./assets/Hans&Naura.jpg')] bg-cover bg-center p-6 transform translate-y-8 shadow-lg relative rounded-lg">
+          <div class="absolute top-[-70px] left-[-65px]">
+            <img src="./assets/3.png" alt="Decorative Icon Left" class="w-[155px] h-[155px] scale-x-[-1]"/>
+          </div>
+          <div class="absolute bottom-[240px] right-[-80px]">
+            <img src="./assets/7.png" alt="Decorative Icon Right" class="w-[155px] h-[155px]"/>
+          </div>
+        </div>
+        <div class="relative w-full md:hidden mt-6">
+          <div class="absolute top-[-50px] left-[-20px]">
+            <img src="./assets/3.png" alt="Decorative Icon Left" class="w-[100px] h-[100px] scale-x-[-1]"/>
+          </div>
+          <div class="absolute top-[40px] right-[-20px]">
+            <img src="./assets/7.png" alt="Decorative Icon Right" class="w-[100px] h-[100px]"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="snap-start flex flex-col sm:flex-row h-screen bg-[#b8d2ad]">
+      <div class="w-full sm:w-1/2 h-1/2 mb-3 sm:mb-0 sm:h-full">
+        <img src="./assets/our stories.jpg" class="w-full h-full object-cover"/>
+      </div>
+      <div class="w-full sm:w-1/2 flex flex-col justify-center px-5 sm:px-14">
+        <h1 class="text-xl sm:text-6xl font-bold  font-playfair text-black mt-5 sm:mt-0 mb-5 sm:mb-10">OUR STORIES
+        </h1>
+        <p class="text-black leading-relaxed text-sm sm:text-lg mt-5 sm:mt-[150px]">
+          Alex, a CEO with big dreams, and Alisha, an architect with passion for design, met at
+          networking event two years ago. What started as a casual conversation about work quickly turned
+          into something more-shared ideas, mutual respect, and an effortless connection. From that day on,
+          their journey has been filled with laughter, support, and counteless unforgettable moments. Now, 
+          they're ready to start their next chapter together.
+        </p>
+      </div>
+    </section>  
+
+    <script src="./js/script.js"></script> 
+  </body>
+</html>
